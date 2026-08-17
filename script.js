@@ -9,7 +9,8 @@ const ICONS = {
 };
 
 // 未入力時に使うデフォルト表示テキスト
-const DEFAULT_HOURS_TEXT = "営業時間：〇〇:〇〇〜〇〇:〇〇（定休日：〇曜日）";
+const DEFAULT_HOURS_TEXT = "営業時間：〇〇:〇〇〜〇〇:〇〇";
+const DEFAULT_CLOSED_DAY_TEXT = "定休日：〇曜日";
 const DEFAULT_COMMENT_TEXT = "（行った感想 or 気になる理由をメモ）";
 
 // localStorageに保存する際のキー
@@ -43,6 +44,7 @@ const DEFAULT_SHOPS = [
     area: "渋谷区・笹塚",
     status: "want", // "want" | "visited"
     hours: DEFAULT_HOURS_TEXT,
+    closedDay: DEFAULT_CLOSED_DAY_TEXT,
     tags: ["#ドライフラワー", "#隠れ家風", "#ギフト向け"],
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
@@ -55,6 +57,7 @@ const DEFAULT_SHOPS = [
     area: "東京ミッドタウン日比谷店",
     status: "want",
     hours: DEFAULT_HOURS_TEXT,
+    closedDay: DEFAULT_CLOSED_DAY_TEXT,
     tags: ["#商業施設内", "#ブーケ"],
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
@@ -67,6 +70,7 @@ const DEFAULT_SHOPS = [
     area: "自由が丘",
     status: "want",
     hours: DEFAULT_HOURS_TEXT,
+    closedDay: DEFAULT_CLOSED_DAY_TEXT,
     tags: ["#ナチュラル系", "#雑貨あり"],
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
@@ -79,6 +83,7 @@ const DEFAULT_SHOPS = [
     area: "梅ヶ丘",
     status: "want",
     hours: DEFAULT_HOURS_TEXT,
+    closedDay: DEFAULT_CLOSED_DAY_TEXT,
     tags: ["#町の花屋", "#普段使い"],
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
@@ -91,6 +96,7 @@ const DEFAULT_SHOPS = [
     area: "京都",
     status: "want",
     hours: DEFAULT_HOURS_TEXT,
+    closedDay: DEFAULT_CLOSED_DAY_TEXT,
     tags: ["#花と喫茶", "#旅の思い出"],
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
@@ -176,9 +182,12 @@ function createShopCardHTML(shop) {
             <div class="status-toggle-labels"><span>行きたい</span><span>行った</span></div>
           </div>
         </div>
-        <div class="flex items-center gap-1.5 text-xs text-[#8A7F6A] mb-3">
-          ${ICONS.clock}
-          <span>${shop.hours}</span>
+        <div class="flex items-start gap-1.5 text-xs text-[#8A7F6A] mb-3">
+          <span class="mt-0.5">${ICONS.clock}</span>
+          <div class="leading-relaxed">
+            <p>${shop.hours}</p>
+            ${shop.closedDay ? `<p>${shop.closedDay}</p>` : ""}
+          </div>
         </div>
         <div class="flex flex-wrap gap-1.5 mb-3">
           ${tagsHTML}
@@ -391,6 +400,7 @@ function fillFormWithShop(shop) {
   document.getElementById("input-name").value = shop.name;
   document.getElementById("input-area").value = shop.area;
   document.getElementById("input-hours").value = shop.hours;
+  document.getElementById("input-closed-day").value = shop.closedDay || "";
   document.getElementById("input-instagram").value = shop.instagramUrl === "#" ? "" : shop.instagramUrl;
   document.getElementById("input-comment").value = shop.comment;
 
@@ -527,6 +537,7 @@ function saveShop() {
   const nameInput = document.getElementById("input-name");
   const areaInput = document.getElementById("input-area");
   const hoursInput = document.getElementById("input-hours");
+  const closedDayInput = document.getElementById("input-closed-day");
   const instagramInput = document.getElementById("input-instagram");
   const commentInput = document.getElementById("input-comment");
   const errorEl = document.getElementById("register-error");
@@ -547,6 +558,7 @@ function saveShop() {
     name,
     area,
     hours: hoursInput.value.trim() || DEFAULT_HOURS_TEXT,
+    closedDay: closedDayInput.value.trim() || DEFAULT_CLOSED_DAY_TEXT,
     tags: selectedTags,
     comment: commentInput.value.trim() || DEFAULT_COMMENT_TEXT,
     instagramUrl: instagramInput.value.trim() || "#",
@@ -571,7 +583,7 @@ function resetRegisterForm() {
   document.getElementById("register-form").reset();
   document.getElementById("register-error").classList.add("hidden");
   document.getElementById("register-modal-title").textContent = "🌷 花屋を登録する";
-  document.getElementById("register-submit-btn").textContent = "🌱 「行きたい」に登録する";
+  document.getElementById("register-submit-btn").textContent = "🌱 登録する";
 
   editingShopId = null;
   activeFlowerPhotoIndex = null;

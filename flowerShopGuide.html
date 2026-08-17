@@ -18,7 +18,7 @@
   <div class="absolute -bottom-16 -left-10 w-64 h-64 rounded-full bg-[#EFD9C8] opacity-50 blur-2xl"></div>
   <div class="relative max-w-5xl mx-auto px-6 py-14 text-center">
     <p class="header-font text-xs tracking-[0.3em] text-[#8A9A7E] font-medium mb-3">FLOWER SHOP GUIDE</p>
-    <h1 class="header-font text-4xl md:text-5xl font-bold text-[#5C6E4D] mb-3">おはなやさんりすと</h1>
+    <h1 class="header-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#5C6E4D] mb-3 whitespace-nowrap">おはなやさんりすと</h1>
     <p class="header-font text-sm md:text-base text-[#8A7F6A]">すきな花屋さん、どんどんストック。</p>
   </div>
 </header>
@@ -123,9 +123,15 @@
         <input type="text" id="input-new-tag" placeholder="新しいタグを追加（例：#隠れ家風）Enterで追加" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
       </div>
 
-      <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">営業時間・定休日<span class="text-[#A79C86] font-normal">（任意）</span></label>
-        <input type="text" id="input-hours" placeholder="例）10:00〜19:00（定休日：水曜日）" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">営業時間<span class="text-[#A79C86] font-normal">（任意）</span></label>
+          <input type="text" id="input-hours" placeholder="例）営業時間：10:00〜19:00" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">定休日<span class="text-[#A79C86] font-normal">（任意）</span></label>
+          <input type="text" id="input-closed-day" placeholder="例）定休日：水曜日" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        </div>
       </div>
 
       <div>
@@ -154,7 +160,7 @@
       <p id="register-error" class="hidden text-xs text-red-500 mb-3">店舗名とエリアは必須項目です。</p>
       <div class="flex gap-2">
         <button onclick="closeRegisterModal()" class="flex-1 text-sm font-bold text-[#6E7F5C] bg-[#EDF0E5] border border-[#D3DCC4] py-2.5 rounded-lg">キャンセル</button>
-        <button id="register-submit-btn" onclick="saveShop()" class="flex-1 text-sm font-bold text-white bg-gradient-to-r from-[#C89B7B] to-[#D4AC8B] py-2.5 rounded-lg">🌱 「行きたい」に登録する</button>
+        <button id="register-submit-btn" onclick="saveShop()" class="flex-1 text-sm font-bold text-white bg-gradient-to-r from-[#C89B7B] to-[#D4AC8B] py-2.5 rounded-lg">🌱 登録する</button>
       </div>
     </div>
   </div>
