@@ -142,6 +142,13 @@ function getMapSearchUrl(shop) {
   return `https://www.google.com/maps/search/?api=1&query=${getMapQuery(shop)}`;
 }
 
+// タップして初めて地図を操作可能にする（スマホでスクロールと地図操作が競合しないように）
+function activateMap(button) {
+  const iframe = button.previousElementSibling;
+  iframe.classList.remove("pointer-events-none");
+  button.remove();
+}
+
 // 1件分の店舗カードHTMLを生成
 function createShopCardHTML(shop) {
   const tagsHTML = shop.tags
@@ -158,7 +165,7 @@ function createShopCardHTML(shop) {
           <h3 class="font-display text-lg font-bold text-[#4A4438] leading-snug">${shop.name}</h3>
           <div class="flex items-center gap-1.5 ml-2 shrink-0">
             <span class="text-[10px] bg-[#EDE7D6] text-[#8A7F6A] px-2 py-1 rounded-full whitespace-nowrap">${shop.area}</span>
-            <button type="button" onclick="openRegisterModal(${shop.id})" class="text-[#A79C86] hover:text-[#6E7F5C]" aria-label="編集">
+            <button type="button" onclick="openRegisterModal(${shop.id})" class="p-1.5 -m-1.5 rounded-full text-[#A79C86] hover:text-[#6E7F5C] hover:bg-[#EDE7D6]" aria-label="編集">
               ${ICONS.edit}
             </button>
           </div>
@@ -184,7 +191,10 @@ function createShopCardHTML(shop) {
         </div>
         <div class="mb-3">
           <p class="text-[11px] font-bold text-[#8A7F6A] mb-1.5">📍 地図</p>
-          <iframe src="${getMapEmbedUrl(shop)}" class="w-full h-32 rounded-lg border border-[#E7E0CE]" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="relative">
+            <iframe src="${getMapEmbedUrl(shop)}" class="w-full h-32 rounded-lg border border-[#E7E0CE] pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <button type="button" onclick="activateMap(this)" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-[#6E7F5C] bg-white/30 backdrop-blur-[1px] rounded-lg">タップして地図を操作</button>
+          </div>
         </div>
         <div class="comment-bubble bg-[#FBF8F2] rounded-xl p-3 mb-4">
           <p class="text-xs text-[#8A7F6A] mb-1 font-bold">💬 コメント・メモ</p>
@@ -197,7 +207,7 @@ function createShopCardHTML(shop) {
           </a>
           <a href="${getMapSearchUrl(shop)}" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 text-xs font-bold text-[#6E7F5C] bg-[#EDF0E5] border border-[#D3DCC4] py-2.5 rounded-lg">
             ${ICONS.map}
-            Googleマップで見る
+            地図を見る
           </a>
         </div>
       </div>
@@ -276,6 +286,7 @@ function renderShops() {
   visitedGrid.innerHTML = visitedShops.map(createShopCardHTML).join("");
 
   const filtering = isFiltering();
+  document.getElementById("clear-filter-btn").classList.toggle("hidden", !filtering);
   applyEmptyState(
     wantGrid, wantEmpty, wantShops.length,
     filtering ? "条件に一致する花屋がありません" : "まだ「行きたい」お店がありません",
@@ -410,7 +421,7 @@ function renderPhotoPreviews() {
   shopZone.innerHTML = formPhotoState.shopPhoto
     ? `<div class="relative w-full h-full">
         <img src="${formPhotoState.shopPhoto}" class="w-full h-full object-cover">
-        <button type="button" onclick="event.stopPropagation(); removeShopPhoto();" class="absolute top-1 right-1 w-5 h-5 flex items-center justify-center rounded-full bg-black/50 text-white text-xs hover:bg-black/70">×</button>
+        <button type="button" onclick="event.stopPropagation(); removeShopPhoto();" class="absolute top-1 right-1 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white text-sm hover:bg-black/70">×</button>
       </div>`
     : `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg><span class="text-xs">画像をアップロード</span>`;
 
@@ -420,7 +431,7 @@ function renderPhotoPreviews() {
     zone.innerHTML = src
       ? `<div class="relative w-full h-full">
           <img src="${src}" class="w-full h-full object-cover">
-          <button type="button" onclick="event.stopPropagation(); removeFlowerPhoto(${index});" class="absolute top-0.5 right-0.5 w-4 h-4 flex items-center justify-center rounded-full bg-black/50 text-white text-[10px] hover:bg-black/70">×</button>
+          <button type="button" onclick="event.stopPropagation(); removeFlowerPhoto(${index});" class="absolute top-0.5 right-0.5 w-6 h-6 flex items-center justify-center rounded-full bg-black/50 text-white text-xs hover:bg-black/70">×</button>
         </div>`
       : ICONS.upload;
   });

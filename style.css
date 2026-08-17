@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'Charifont';
+  src: url('Charifont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body { font-family: 'Zen Maru Gothic', sans-serif; background-color: #F7F3EA; }
 .font-display { font-family: 'Klee One', serif; }
-.header-font { font-family: 'Shippori Mincho', serif; }
+.header-font { font-family: 'Charifont', serif; }
 .tab-active {
   background-color: #6E7F5C;
   color: #F7F3EA;

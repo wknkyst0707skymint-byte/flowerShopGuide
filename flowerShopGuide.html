@@ -6,7 +6,7 @@
 <title>おはなやさんりすと</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -46,10 +46,10 @@
 
   <!-- 検索・タグ絞り込み -->
   <div class="bg-white border border-[#DCD3BE] rounded-2xl p-4 mb-8 shadow-sm">
-    <div class="flex items-center gap-2 mb-3">
+    <div class="flex flex-wrap items-center gap-2 mb-3">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#A79C86] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" /></svg>
-      <input type="text" id="search-input" placeholder="店舗名・エリアで検索" class="flex-1 text-sm bg-[#F7F3EA] border border-[#DCD3BE] rounded-full px-4 py-2 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
-      <button type="button" id="clear-filter-btn" class="text-xs text-[#A79C86] hover:text-[#6E7F5C] whitespace-nowrap">条件をクリア</button>
+      <input type="text" id="search-input" placeholder="店舗名・エリアで検索" class="flex-1 min-w-0 text-sm bg-[#F7F3EA] border border-[#DCD3BE] rounded-full px-4 py-2 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+      <button type="button" id="clear-filter-btn" class="hidden text-xs text-[#A79C86] hover:text-[#6E7F5C] whitespace-nowrap px-1 py-1.5">条件をクリア</button>
     </div>
     <div id="filter-tag-list" class="flex flex-wrap gap-1.5"></div>
   </div>
@@ -81,7 +81,7 @@
   <div class="bg-[#FBF8F2] rounded-2xl border border-[#E7E0CE] w-full max-w-lg shadow-xl">
     <div class="flex items-center justify-between px-6 py-5 border-b border-[#E7E0CE]">
       <h2 id="register-modal-title" class="font-display text-lg font-bold text-[#4A4438]">🌷 花屋を登録する</h2>
-      <button onclick="closeRegisterModal()" class="text-[#A79C86] hover:text-[#5C5546]">
+      <button onclick="closeRegisterModal()" class="p-2 -m-2 rounded-full text-[#A79C86] hover:text-[#5C5546] hover:bg-[#EDE7D6]">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
@@ -160,8 +160,9 @@
   </div>
 </div>
 
-<footer class="border-t border-[#DCD3BE] py-8 text-center">
-  <p class="text-xs text-[#A79C86]">🌱 これはワイヤーフレーム（試作品）です。写真・地図・営業時間は後ほど正式な情報に差し替えます。</p>
+<footer class="border-t border-[#DCD3BE] py-8 px-6 text-center">
+  <p class="text-xs text-[#A79C86] leading-relaxed max-w-lg mx-auto mb-2">掲載している店舗情報は、運営者が個人的に収集・記録したものであり、各店舗の許可を得て掲載しているものではありません。本サイトは個人利用を目的としており、商用利用や情報の転載はご遠慮ください。</p>
+  <p class="header-font text-[11px] text-[#C4BAA4]">© 2026 おはなやさんりすと</p>
 </footer>
 
 <script src="script.js"></script>
