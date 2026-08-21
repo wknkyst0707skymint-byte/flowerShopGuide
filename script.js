@@ -1,11 +1,11 @@
-// アイコン（カード内で使い回すSVG）
+// アイコン（カード内で使い回すSVG。サイズは表示先のCSSで文脈に応じて指定）
 const ICONS = {
-  photoPlaceholder: `<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 20h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`,
-  clock: `<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-  instagram: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838a4 4 0 100 8 4 4 0 000-8zm6.406-.845a1.44 1.44 0 100-2.881 1.44 1.44 0 000 2.881z"/></svg>`,
-  map: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-  upload: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>`,
-  edit: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>`
+  photoPlaceholder: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 20h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`,
+  clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+  instagram: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838a4 4 0 100 8 4 4 0 000-8zm6.406-.845a1.44 1.44 0 100-2.881 1.44 1.44 0 000 2.881z"/></svg>`,
+  map: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+  upload: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>`,
+  edit: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>`
 };
 
 // 未入力時に使うデフォルト表示テキスト
@@ -50,7 +50,9 @@ const DEFAULT_SHOPS = [
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
     photo: null,
-    flowerPhotos: [null, null, null]
+    flowerPhotos: [null, null, null],
+    ratings: { flower: null, staff: null, price: null },
+    starRating: null
   },
   {
     id: 2,
@@ -63,7 +65,9 @@ const DEFAULT_SHOPS = [
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
     photo: null,
-    flowerPhotos: [null, null, null]
+    flowerPhotos: [null, null, null],
+    ratings: { flower: null, staff: null, price: null },
+    starRating: null
   },
   {
     id: 3,
@@ -76,7 +80,9 @@ const DEFAULT_SHOPS = [
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
     photo: null,
-    flowerPhotos: [null, null, null]
+    flowerPhotos: [null, null, null],
+    ratings: { flower: null, staff: null, price: null },
+    starRating: null
   },
   {
     id: 4,
@@ -89,7 +95,9 @@ const DEFAULT_SHOPS = [
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
     photo: null,
-    flowerPhotos: [null, null, null]
+    flowerPhotos: [null, null, null],
+    ratings: { flower: null, staff: null, price: null },
+    starRating: null
   },
   {
     id: 5,
@@ -102,7 +110,9 @@ const DEFAULT_SHOPS = [
     comment: DEFAULT_COMMENT_TEXT,
     instagramUrl: "#",
     photo: null,
-    flowerPhotos: [null, null, null]
+    flowerPhotos: [null, null, null],
+    ratings: { flower: null, staff: null, price: null },
+    starRating: null
   }
 ];
 
@@ -112,28 +122,58 @@ const shops = loadShopsFromStorage() ?? DEFAULT_SHOPS;
 // 店舗写真ブロックのHTML（写真があれば表示、なければプレースホルダー）
 function renderShopPhotoBlock(shop) {
   if (shop.photo) {
-    return `<img src="${shop.photo}" class="w-full h-full object-cover">`;
+    return `<img src="${shop.photo}" class="full-cover-img">`;
   }
   return `
     ${ICONS.photoPlaceholder}
-    <span class="text-xs">店舗写真プレースホルダー</span>
+    <span class="placeholder-text">店舗写真プレースホルダー</span>
   `;
 }
 
 // 花・ラッピング写真3枠のHTML（写真があれば表示、なければプレースホルダー）
 function renderFlowerPhotoThumbs(shop) {
   const labels = ["花の写真", "花の写真", "ラッピング写真"];
-  const bgColors = ["bg-[#EDE7D6]", "bg-[#EDE7D6]", "bg-[#F3E4D8]"];
-  const textColors = ["text-[#B8AE95]", "text-[#B8AE95]", "text-[#B89F80]"];
+  const colorClasses = ["mini-thumb-flower", "mini-thumb-flower", "mini-thumb-wrap"];
 
   return shop.flowerPhotos
     .map((src, i) => {
       if (src) {
-        return `<div class="mini-thumb rounded-lg overflow-hidden"><img src="${src}" class="w-full h-full object-cover"></div>`;
+        return `<div class="mini-thumb"><img src="${src}" class="full-cover-img"></div>`;
       }
-      return `<div class="mini-thumb ${bgColors[i]} rounded-lg flex items-center justify-center text-[9px] ${textColors[i]} text-center px-1">${labels[i]}</div>`;
+      return `<div class="mini-thumb mini-thumb-placeholder ${colorClasses[i]}">${labels[i]}</div>`;
     })
     .join("");
+}
+
+// 評価項目（花の種類・スタッフ・値段）の選択値 → 表示ラベルの対応表
+const RATING_LABELS = {
+  flower: { many: "🌼 花の種類：多い", few: "🌼 花の種類：少ない" },
+  staff: { good: "🙂 スタッフ：良い", average: "🙂 スタッフ：普通", bad: "🙂 スタッフ：悪い" },
+  price: { high: "💰 値段：高め", low: "💰 値段：安め" }
+};
+
+// 選択されている評価項目だけをバッジのHTMLにする（未選択のものは表示しない）
+function renderRatingBadges(shop) {
+  if (!shop.ratings) return "";
+  return ["flower", "staff", "price"]
+    .map(key => {
+      const value = shop.ratings[key];
+      const label = value && RATING_LABELS[key][value];
+      return label ? `<span class="rating-badge">${label}</span>` : "";
+    })
+    .join("");
+}
+
+// 星評価（1〜5）のHTML。未評価の場合は何も返さない
+function renderStars(shop) {
+  if (!shop.starRating) return "";
+  const stars = Array.from({ length: 5 }, (_, i) => (i < shop.starRating ? "★" : "☆")).join("");
+  return `
+    <dl class="shop-card-star-dl">
+      <dt class="sr-only">評価</dt>
+      <dd class="shop-card-stars" aria-label="評価 ${shop.starRating} / 5">${stars}</dd>
+    </dl>
+  `;
 }
 
 // 店舗名+エリアからGoogleマップ用の検索クエリを作成
@@ -159,69 +199,80 @@ function activateMap(button) {
 // 1件分の店舗カードHTMLを生成
 function createShopCardHTML(shop) {
   const tagsHTML = shop.tags
-    .map(tag => `<span class="text-xs bg-[#E9EFE0] text-[#6E7F5C] px-2.5 py-1 rounded-full">${tag}</span>`)
+    .map(tag => `<span class="shop-card-tag">${tag}</span>`)
     .join("");
+  const ratingBadgesHTML = renderRatingBadges(shop);
 
   return `
-    <div class="card-hover bg-white rounded-2xl border border-[#E7E0CE] overflow-hidden" data-shop-id="${shop.id}">
-      <div class="aspect-[4/3] bg-[#EDE7D6] flex flex-col items-center justify-center text-[#B8AE95] overflow-hidden">
+    <article class="card-hover" data-shop-id="${shop.id}">
+      <div class="shop-card-photo">
         ${renderShopPhotoBlock(shop)}
       </div>
-      <div class="p-5">
-        <div class="flex items-start justify-between mb-1.5">
-          <h3 class="font-display text-lg font-bold text-[#4A4438] leading-snug">${shop.name}</h3>
-          <div class="flex items-center gap-1.5 ml-2 shrink-0">
-            <span class="text-[10px] bg-[#EDE7D6] text-[#8A7F6A] px-2 py-1 rounded-full whitespace-nowrap">${shop.area}</span>
-            <button type="button" onclick="openRegisterModal(${shop.id})" class="p-1.5 -m-1.5 rounded-full text-[#A79C86] hover:text-[#6E7F5C] hover:bg-[#EDE7D6]" aria-label="編集">
+      <div class="shop-card-body">
+        <div class="shop-card-header">
+          <h3 class="font-display shop-card-title">${shop.name}</h3>
+          <div class="shop-card-meta">
+            <span class="shop-card-area">${shop.area}</span>
+            <button type="button" onclick="openRegisterModal(${shop.id})" class="shop-card-edit-btn" aria-label="編集">
               ${ICONS.edit}
             </button>
           </div>
         </div>
-        <div class="mb-3">
-          <div class="status-toggle${shop.status === "visited" ? " is-visited" : ""}" onclick="toggleStatus(${shop.id})">
-            <div class="status-toggle-knob"></div>
-            <div class="status-toggle-labels"><span>行きたい</span><span>行った</span></div>
-          </div>
+        <div class="shop-card-toggle-wrap">
+          <button type="button" role="switch" aria-checked="${shop.status === "visited"}" aria-label="行きたい／行った の切り替え" class="status-toggle${shop.status === "visited" ? " is-visited" : ""}" onclick="toggleStatus(${shop.id})">
+            <span class="status-toggle-knob"></span>
+            <span class="status-toggle-labels"><span>行きたい</span><span>行った</span></span>
+          </button>
         </div>
-        <div class="flex items-start gap-1.5 text-xs text-[#8A7F6A] mb-3">
-          <span class="mt-0.5">${ICONS.clock}</span>
-          <div class="leading-relaxed">
-            <p>${shop.hours}</p>
-            ${shop.closedDay ? `<p>${shop.closedDay}</p>` : ""}
-          </div>
+        <div class="shop-card-hours">
+          <span class="shop-card-hours-icon">${ICONS.clock}</span>
+          <dl class="shop-card-hours-text">
+            <dt class="sr-only">営業時間</dt>
+            <dd>${shop.hours}</dd>
+            ${shop.closedDay ? `<dt class="sr-only">定休日</dt><dd>${shop.closedDay}</dd>` : ""}
+          </dl>
         </div>
-        <div class="flex flex-wrap gap-1.5 mb-3">
-          ${tagsHTML}
-        </div>
-        <div class="mb-3">
-          <p class="text-[11px] font-bold text-[#8A7F6A] mb-1.5">🌸 花の種類・ラッピング</p>
-          <div class="grid grid-cols-3 gap-1.5">
+        ${ratingBadgesHTML ? `
+        <dl class="shop-card-ratings-dl">
+          <dt class="sr-only">店舗詳細</dt>
+          <dd class="shop-card-ratings">${ratingBadgesHTML}</dd>
+        </dl>` : ""}
+        <dl class="shop-card-tags-dl">
+          <dt class="sr-only">タグ</dt>
+          <dd class="shop-card-tags">
+            ${tagsHTML}
+          </dd>
+        </dl>
+        <dl class="shop-card-section">
+          <dt class="shop-card-section-title">🌸 花の種類・ラッピング</dt>
+          <dd class="photo-grid-3">
             ${renderFlowerPhotoThumbs(shop)}
-          </div>
-        </div>
-        <div class="mb-3">
-          <p class="text-[11px] font-bold text-[#8A7F6A] mb-1.5">📍 地図</p>
-          <div class="relative">
-            <iframe src="${getMapEmbedUrl(shop)}" class="w-full h-32 rounded-lg border border-[#E7E0CE] pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <button type="button" onclick="activateMap(this)" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-[#6E7F5C] bg-white/30 backdrop-blur-[1px] rounded-lg">タップして地図を操作</button>
-          </div>
-        </div>
-        <div class="comment-bubble bg-[#FBF8F2] rounded-xl p-3 mb-4">
-          <p class="text-xs text-[#8A7F6A] mb-1 font-bold">💬 コメント・メモ</p>
-          <p class="text-sm text-[#5C5546] leading-relaxed">${shop.comment}</p>
-        </div>
-        <div class="flex gap-2">
-          <a href="${shop.instagramUrl}" class="flex-1 flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-[#C89B7B] to-[#D4AC8B] py-2.5 rounded-lg">
+          </dd>
+        </dl>
+        <dl class="shop-card-section">
+          <dt class="shop-card-section-title">📍 地図</dt>
+          <dd class="map-wrap">
+            <iframe src="${getMapEmbedUrl(shop)}" class="map-frame pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <button type="button" onclick="activateMap(this)" class="map-overlay-btn">タップして地図を操作</button>
+          </dd>
+        </dl>
+        ${renderStars(shop)}
+        <dl class="comment-bubble">
+          <dt class="comment-bubble-title">💬 コメント・メモ</dt>
+          <dd class="comment-bubble-text">${shop.comment}</dd>
+        </dl>
+        <div class="shop-card-actions">
+          <a href="${shop.instagramUrl}" class="card-action-btn card-action-btn-primary">
             ${ICONS.instagram}
             Instagram
           </a>
-          <a href="${getMapSearchUrl(shop)}" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 text-xs font-bold text-[#6E7F5C] bg-[#EDF0E5] border border-[#D3DCC4] py-2.5 rounded-lg">
+          <a href="${getMapSearchUrl(shop)}" target="_blank" rel="noopener noreferrer" class="card-action-btn card-action-btn-secondary">
             ${ICONS.map}
             地図を見る
           </a>
         </div>
       </div>
-    </div>
+    </article>
   `;
 }
 
@@ -273,12 +324,12 @@ function renderTagFilterOptions() {
   const allTags = [...new Set(shops.flatMap(shop => shop.tags))].sort();
 
   if (allTags.length === 0) {
-    container.innerHTML = `<p class="text-xs text-[#A79C86]">タグを登録するとここに表示されます</p>`;
+    container.innerHTML = `<p class="filter-tag-empty">タグを登録するとここに表示されます</p>`;
     return;
   }
 
   container.innerHTML = allTags
-    .map(tag => `<button type="button" class="tag-option text-xs px-2.5 py-1 rounded-full border${activeFilterTags.has(tag) ? " is-selected" : ""}" data-tag="${tag}">${tag}</button>`)
+    .map(tag => `<button type="button" class="tag-option${activeFilterTags.has(tag) ? " is-selected" : ""}" data-tag="${tag}">${tag}</button>`)
     .join("");
 }
 
@@ -357,6 +408,8 @@ function switchTab(status) {
     tabWant.classList.remove("tab-inactive");
     tabVisited.classList.add("tab-inactive");
     tabVisited.classList.remove("tab-active");
+    tabWant.setAttribute("aria-selected", "true");
+    tabVisited.setAttribute("aria-selected", "false");
   } else {
     panelVisited.classList.remove("hidden");
     panelWant.classList.add("hidden");
@@ -364,13 +417,14 @@ function switchTab(status) {
     tabVisited.classList.remove("tab-inactive");
     tabWant.classList.add("tab-inactive");
     tabWant.classList.remove("tab-active");
+    tabVisited.setAttribute("aria-selected", "true");
+    tabWant.setAttribute("aria-selected", "false");
   }
 }
 
 // 登録モーダルの状態（編集中の店舗ID、写真データ）
 let editingShopId = null;
 let formPhotoState = { shopPhoto: null, flowerPhotos: [null, null, null] };
-let activeFlowerPhotoIndex = null;
 
 // 登録モーダル（shopIdを渡すと編集モード、渡さなければ新規登録モード）
 function openRegisterModal(shopId = null) {
@@ -400,10 +454,39 @@ function closeRegisterModalOnOverlay(e) {
 function fillFormWithShop(shop) {
   document.getElementById("input-name").value = shop.name;
   document.getElementById("input-area").value = shop.area;
-  document.getElementById("input-hours").value = shop.hours;
-  document.getElementById("input-closed-day").value = shop.closedDay || "";
   document.getElementById("input-instagram").value = shop.instagramUrl === "#" ? "" : shop.instagramUrl;
   document.getElementById("input-comment").value = shop.comment;
+
+  // 営業時間が「◯◯:00〜◯◯:00」のちょうど1時間単位ならプルダウンに反映、
+  // それ以外（30分単位や自由文言）は手入力欄にそのまま表示
+  const hoursMatch = shop.hours.match(/(\d{2}):(\d{2})[〜~](\d{2}):(\d{2})/);
+  if (hoursMatch && hoursMatch[2] === "00" && hoursMatch[4] === "00") {
+    document.getElementById("input-hours-start").value = `${hoursMatch[1]}:00`;
+    document.getElementById("input-hours-end").value = `${hoursMatch[3]}:00`;
+    document.getElementById("input-hours-manual").value = "";
+  } else {
+    document.getElementById("input-hours-start").value = "";
+    document.getElementById("input-hours-end").value = "";
+    document.getElementById("input-hours-manual").value = shop.hours;
+  }
+
+  // 定休日の文言に含まれる曜日・祝の文字を見つけて、対応するボタンを選択状態にする
+  const closedDayText = shop.closedDay || "";
+  document.querySelectorAll("#closed-day-options .tag-option").forEach(btn => {
+    btn.classList.toggle("is-selected", closedDayText.includes(btn.dataset.day));
+  });
+
+  const setCheckedRating = (name, value) => {
+    if (!value) return;
+    const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
+    if (input) input.checked = true;
+  };
+  if (shop.ratings) {
+    setCheckedRating("rating-flower", shop.ratings.flower);
+    setCheckedRating("rating-staff", shop.ratings.staff);
+    setCheckedRating("rating-price", shop.ratings.price);
+  }
+  setCheckedRating("rating-stars", shop.starRating);
 
   formPhotoState = {
     shopPhoto: shop.photo,
@@ -417,7 +500,7 @@ function fillFormWithShop(shop) {
     if (!btn) {
       btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "tag-option text-xs px-2.5 py-1 rounded-full border";
+      btn.className = "tag-option";
       btn.dataset.tag = tag;
       btn.textContent = tag;
       suggestions.appendChild(btn);
@@ -430,19 +513,19 @@ function fillFormWithShop(shop) {
 function renderPhotoPreviews() {
   const shopZone = document.getElementById("shop-photo-dropzone");
   shopZone.innerHTML = formPhotoState.shopPhoto
-    ? `<div class="relative w-full h-full">
-        <img src="${formPhotoState.shopPhoto}" class="w-full h-full object-cover">
-        <button type="button" onclick="event.stopPropagation(); removeShopPhoto();" class="absolute top-1 right-1 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 text-white text-sm hover:bg-black/70">×</button>
+    ? `<div class="photo-preview-wrap">
+        <img src="${formPhotoState.shopPhoto}" class="full-cover-img">
+        <button type="button" onclick="event.preventDefault(); event.stopPropagation(); removeShopPhoto();" class="photo-remove-btn photo-remove-btn-lg">×</button>
       </div>`
-    : `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg><span class="text-xs">画像をアップロード</span>`;
+    : `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg><span class="placeholder-text">画像をアップロード</span>`;
 
   document.querySelectorAll("#flower-photo-grid .photo-dropzone").forEach(zone => {
     const index = Number(zone.dataset.index);
     const src = formPhotoState.flowerPhotos[index];
     zone.innerHTML = src
-      ? `<div class="relative w-full h-full">
-          <img src="${src}" class="w-full h-full object-cover">
-          <button type="button" onclick="event.stopPropagation(); removeFlowerPhoto(${index});" class="absolute top-0.5 right-0.5 w-6 h-6 flex items-center justify-center rounded-full bg-black/50 text-white text-xs hover:bg-black/70">×</button>
+      ? `<div class="photo-preview-wrap">
+          <img src="${src}" class="full-cover-img">
+          <button type="button" onclick="event.preventDefault(); event.stopPropagation(); removeFlowerPhoto(${index});" class="photo-remove-btn">×</button>
         </div>`
       : ICONS.upload;
   });
@@ -492,32 +575,32 @@ function resizeImageToDataUrl(file, maxSize, quality) {
   });
 }
 
-// 写真アップロード欄のクリック・ファイル選択のイベントを設定
+// 写真アップロード欄のファイル選択イベントを設定
+// （クリックでの起動は<label for>によるネイティブな挙動に任せているので、ここでは変更の監視だけでよい）
 function initPhotoInputs() {
-  const shopPhotoInput = document.getElementById("input-shop-photo");
-  document.getElementById("shop-photo-dropzone").addEventListener("click", () => shopPhotoInput.click());
-  shopPhotoInput.addEventListener("change", e => {
+  document.getElementById("input-shop-photo").addEventListener("change", e => {
     const file = e.target.files[0];
     if (!file) return;
     resizeImageToDataUrl(file, 800, 0.8).then(dataUrl => {
       formPhotoState.shopPhoto = dataUrl;
       renderPhotoPreviews();
+    }).catch(err => {
+      console.error("画像の処理に失敗しました", err);
+      alert("画像の読み込みに失敗しました。別の画像で試してみてください。");
     });
   });
 
-  const flowerPhotoInput = document.getElementById("input-flower-photo");
-  document.getElementById("flower-photo-grid").addEventListener("click", e => {
-    const zone = e.target.closest(".photo-dropzone");
-    if (!zone) return;
-    activeFlowerPhotoIndex = Number(zone.dataset.index);
-    flowerPhotoInput.click();
-  });
-  flowerPhotoInput.addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (!file || activeFlowerPhotoIndex === null) return;
-    resizeImageToDataUrl(file, 500, 0.8).then(dataUrl => {
-      formPhotoState.flowerPhotos[activeFlowerPhotoIndex] = dataUrl;
-      renderPhotoPreviews();
+  [0, 1, 2].forEach(index => {
+    document.getElementById(`input-flower-photo-${index}`).addEventListener("change", e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      resizeImageToDataUrl(file, 500, 0.8).then(dataUrl => {
+        formPhotoState.flowerPhotos[index] = dataUrl;
+        renderPhotoPreviews();
+      }).catch(err => {
+        console.error("画像の処理に失敗しました", err);
+        alert("画像の読み込みに失敗しました。別の画像で試してみてください。");
+      });
     });
   });
 }
@@ -552,7 +635,7 @@ function initNewTagInput() {
     if (!alreadyExists) {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "tag-option is-selected text-xs px-2.5 py-1 rounded-full border";
+      btn.className = "tag-option is-selected";
       btn.dataset.tag = tag;
       btn.textContent = tag;
       suggestions.appendChild(btn);
@@ -561,12 +644,72 @@ function initNewTagInput() {
   });
 }
 
+// 営業時間の開店・閉店プルダウンに 00:00〜23:00 の選択肢を生成する
+function initHoursSelects() {
+  const startSelect = document.getElementById("input-hours-start");
+  const endSelect = document.getElementById("input-hours-end");
+  for (let hour = 0; hour < 24; hour++) {
+    const value = `${String(hour).padStart(2, "0")}:00`;
+    startSelect.insertAdjacentHTML("beforeend", `<option value="${value}">${value}</option>`);
+    endSelect.insertAdjacentHTML("beforeend", `<option value="${value}">${value}</option>`);
+  }
+}
+
+// 定休日ボタンのクリックで選択/解除を切り替え（複数選択可）
+function initClosedDaySelector() {
+  document.getElementById("closed-day-options").addEventListener("click", e => {
+    const btn = e.target.closest(".tag-option");
+    if (!btn) return;
+    btn.classList.toggle("is-selected");
+  });
+}
+
+// 入力済みの営業時間を求める（プルダウン優先、手入力があればそちら優先、
+// どちらも空なら編集中の元の値を維持、新規登録なら既定文言）
+function resolveHours() {
+  const manual = document.getElementById("input-hours-manual").value.trim();
+  const start = document.getElementById("input-hours-start").value;
+  const end = document.getElementById("input-hours-end").value;
+
+  if (manual) {
+    return manual.includes("営業時間") ? manual : `営業時間：${manual}`;
+  }
+  if (start && end) {
+    return `営業時間：${start}〜${end}`;
+  }
+  if (editingShopId !== null) {
+    return shops.find(s => s.id === editingShopId).hours;
+  }
+  return DEFAULT_HOURS_TEXT;
+}
+
+// 選択された定休日ボタンから表示文言を作る（月〜日は「◯曜日」、祝は「祝日」としてまとめる）
+function formatClosedDayText(days) {
+  const weekdays = days.filter(d => d !== "祝");
+  const parts = [];
+  if (weekdays.length > 0) parts.push(`${weekdays.join("・")}曜日`);
+  if (days.includes("祝")) parts.push("祝日");
+  return parts.length > 0 ? `定休日：${parts.join("・")}` : "";
+}
+
+// 入力済みの定休日を求める（ボタン選択優先、なければ編集中の元の値を維持、新規登録なら既定文言）
+function resolveClosedDay() {
+  const selectedDays = [...document.querySelectorAll("#closed-day-options .tag-option.is-selected")]
+    .map(btn => btn.dataset.day);
+
+  if (selectedDays.length > 0) {
+    return formatClosedDayText(selectedDays);
+  }
+  if (editingShopId !== null) {
+    return shops.find(s => s.id === editingShopId).closedDay;
+  }
+  return DEFAULT_CLOSED_DAY_TEXT;
+}
+
 // フォームの入力内容を保存する（新規登録 / 既存店舗の編集の両方を担当）
 function saveShop() {
   const nameInput = document.getElementById("input-name");
   const areaInput = document.getElementById("input-area");
-  const hoursInput = document.getElementById("input-hours");
-  const closedDayInput = document.getElementById("input-closed-day");
   const instagramInput = document.getElementById("input-instagram");
   const commentInput = document.getElementById("input-comment");
   const errorEl = document.getElementById("register-error");
@@ -583,16 +726,24 @@ function saveShop() {
   const selectedTags = [...document.querySelectorAll("#tag-suggestions .tag-option.is-selected")]
     .map(btn => btn.dataset.tag);
 
+  const getCheckedRating = name => document.querySelector(`input[name="${name}"]:checked`)?.value || null;
+
   const shopData = {
     name,
     area,
-    hours: hoursInput.value.trim() || DEFAULT_HOURS_TEXT,
-    closedDay: closedDayInput.value.trim() || DEFAULT_CLOSED_DAY_TEXT,
+    hours: resolveHours(),
+    closedDay: resolveClosedDay(),
     tags: selectedTags,
     comment: commentInput.value.trim() || DEFAULT_COMMENT_TEXT,
     instagramUrl: instagramInput.value.trim() || "#",
     photo: formPhotoState.shopPhoto,
-    flowerPhotos: [...formPhotoState.flowerPhotos]
+    flowerPhotos: [...formPhotoState.flowerPhotos],
+    ratings: {
+      flower: getCheckedRating("rating-flower"),
+      staff: getCheckedRating("rating-staff"),
+      price: getCheckedRating("rating-price")
+    },
+    starRating: Number(getCheckedRating("rating-stars")) || null
   };
 
   if (editingShopId !== null) {
@@ -615,7 +766,6 @@ function resetRegisterForm() {
   document.getElementById("register-submit-btn").textContent = "🌱 登録する";
 
   editingShopId = null;
-  activeFlowerPhotoIndex = null;
   formPhotoState = { shopPhoto: null, flowerPhotos: [null, null, null] };
   renderPhotoPreviews();
 
@@ -627,6 +777,10 @@ function resetRegisterForm() {
       btn.remove();
     }
   });
+
+  document.querySelectorAll("#closed-day-options .tag-option").forEach(btn => {
+    btn.classList.remove("is-selected");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -636,4 +790,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initNewTagInput();
   initPhotoInputs();
   renderPhotoPreviews();
+  initHoursSelects();
+  initClosedDaySelector();
 });

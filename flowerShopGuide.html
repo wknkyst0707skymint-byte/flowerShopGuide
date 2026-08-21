@@ -4,171 +4,256 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>おはなやさんりすと</title>
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-[#4A4438]">
+<body>
 
 <!-- ヘッダー -->
-<header class="relative overflow-hidden border-b border-[#DCD3BE] bg-[#F7F3EA]">
-  <div class="absolute -top-10 -right-10 w-56 h-56 rounded-full bg-[#DDE3CE] opacity-60 blur-2xl"></div>
-  <div class="absolute -bottom-16 -left-10 w-64 h-64 rounded-full bg-[#EFD9C8] opacity-50 blur-2xl"></div>
-  <div class="relative max-w-5xl mx-auto px-6 py-14 text-center">
-    <p class="header-font text-xs tracking-[0.3em] text-[#8A9A7E] font-medium mb-3">FLOWER SHOP GUIDE</p>
-    <h1 class="header-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#5C6E4D] mb-3 whitespace-nowrap">おはなやさんりすと</h1>
-    <p class="header-font text-sm md:text-base text-[#8A7F6A]">すきな花屋さん、どんどんストック。</p>
+<header class="page-header">
+  <div class="header-blob header-blob-1"></div>
+  <div class="header-blob header-blob-2"></div>
+  <div class="header-inner">
+    <p class="header-font header-eyebrow">FLOWER SHOP GUIDE</p>
+    <h1 class="header-font header-title">おはなやさんりすと</h1>
+    <p class="header-font header-subtitle">すきな花屋さん、どんどんストック。</p>
   </div>
 </header>
 
 <!-- ステータス切り替えタブ + 登録ボタン -->
-<div class="max-w-5xl mx-auto px-6 mt-8">
-  <div class="flex flex-col sm:flex-row items-center justify-center gap-3 relative">
-    <div class="inline-flex bg-white border border-[#DCD3BE] rounded-full p-1.5 shadow-sm">
-      <button id="tab-want" onclick="switchTab('want')" class="tab-active px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300">
+<div class="page-container toolbar-section">
+  <div class="toolbar">
+    <div class="tab-list" role="tablist" aria-label="表示の切り替え">
+      <button id="tab-want" role="tab" aria-selected="true" aria-controls="panel-want" onclick="switchTab('want')" class="tab-button tab-active">
         🌱 行きたい
       </button>
-      <button id="tab-visited" onclick="switchTab('visited')" class="tab-inactive px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300">
+      <button id="tab-visited" role="tab" aria-selected="false" aria-controls="panel-visited" onclick="switchTab('visited')" class="tab-button tab-inactive">
         🌸 行った
       </button>
     </div>
-    <button onclick="openRegisterModal()" class="sm:absolute sm:right-0 flex items-center gap-1.5 text-sm font-bold text-white bg-[#C89B7B] hover:bg-[#BC8E6B] px-5 py-2.5 rounded-full shadow-sm transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+    <button onclick="openRegisterModal()" class="register-button">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
       花屋を登録する
     </button>
   </div>
 </div>
 
 <!-- 店舗一覧 -->
-<main class="max-w-5xl mx-auto px-6 py-10">
+<main class="page-container main-content">
 
   <!-- 検索・タグ絞り込み -->
-  <div class="bg-white border border-[#DCD3BE] rounded-2xl p-4 mb-8 shadow-sm">
-    <div class="flex flex-wrap items-center gap-2 mb-3">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#A79C86] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" /></svg>
-      <input type="text" id="search-input" placeholder="店舗名・エリアで検索" class="flex-1 min-w-0 text-sm bg-[#F7F3EA] border border-[#DCD3BE] rounded-full px-4 py-2 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
-      <button type="button" id="clear-filter-btn" class="hidden text-xs text-[#A79C86] hover:text-[#6E7F5C] whitespace-nowrap px-1 py-1.5">条件をクリア</button>
+  <search class="search-panel">
+    <div class="search-row">
+      <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" /></svg>
+      <label for="search-input" class="sr-only">店舗名・エリアで検索</label>
+      <input type="text" id="search-input" placeholder="店舗名・エリアで検索" class="search-input">
+      <button type="button" id="clear-filter-btn" class="hidden search-clear-btn">条件をクリア</button>
     </div>
-    <div id="filter-tag-list" class="flex flex-wrap gap-1.5"></div>
-  </div>
+    <div id="filter-tag-list" class="tag-list"></div>
+  </search>
 
   <!-- 「行きたい」パネル -->
-  <section id="panel-want" class="fade-panel">
-    <div id="want-empty" class="hidden max-w-md mx-auto text-center py-16 px-6 bg-white rounded-2xl border border-dashed border-[#DCD3BE]">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto mb-3 text-[#C9BFA5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-      <p class="font-display text-base font-bold text-[#8A7F6A] mb-2 empty-title">まだ「行きたい」お店がありません</p>
-      <p class="text-xs text-[#A79C86] leading-relaxed empty-hint">「花屋を登録する」から追加してみましょう。</p>
+  <section id="panel-want" role="tabpanel" aria-labelledby="tab-want" class="fade-panel">
+    <h2 class="sr-only">行きたい花屋一覧</h2>
+    <div id="want-empty" class="hidden empty-state-box">
+      <svg xmlns="http://www.w3.org/2000/svg" class="empty-state-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <p class="font-display empty-state-title empty-title">まだ「行きたい」お店がありません</p>
+      <p class="empty-state-hint empty-hint">「花屋を登録する」から追加してみましょう。</p>
     </div>
-    <div id="want-grid" class="grid md:grid-cols-2 gap-6"></div>
+    <div id="want-grid" class="shop-grid"></div>
   </section>
 
   <!-- 「行った」パネル -->
-  <section id="panel-visited" class="fade-panel hidden">
-    <div id="visited-empty" class="max-w-md mx-auto text-center py-16 px-6 bg-white rounded-2xl border border-dashed border-[#DCD3BE]">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto mb-3 text-[#C9BFA5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-      <p class="font-display text-base font-bold text-[#8A7F6A] mb-2 empty-title">まだ「行った」お店がありません</p>
-      <p class="text-xs text-[#A79C86] leading-relaxed empty-hint">カード内のスイッチを「行った」に切り替えると、ここに移動してきます。</p>
+  <section id="panel-visited" role="tabpanel" aria-labelledby="tab-visited" class="fade-panel hidden">
+    <h2 class="sr-only">行った花屋一覧</h2>
+    <div id="visited-empty" class="empty-state-box">
+      <svg xmlns="http://www.w3.org/2000/svg" class="empty-state-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <p class="font-display empty-state-title empty-title">まだ「行った」お店がありません</p>
+      <p class="empty-state-hint empty-hint">カード内のスイッチを「行った」に切り替えると、ここに移動してきます。</p>
     </div>
-    <div id="visited-grid" class="grid md:grid-cols-2 gap-6 hidden"></div>
+    <div id="visited-grid" class="shop-grid hidden"></div>
   </section>
 
 </main>
 
 <!-- 花屋を登録するモーダル -->
-<div id="register-overlay" class="hidden fixed inset-0 bg-[#4A4438]/40 backdrop-blur-[2px] z-40 flex items-start sm:items-center justify-center p-4 py-8 overflow-y-auto" onclick="closeRegisterModalOnOverlay(event)">
-  <div class="bg-[#FBF8F2] rounded-2xl border border-[#E7E0CE] w-full max-w-lg shadow-xl">
-    <div class="flex items-center justify-between px-6 py-5 border-b border-[#E7E0CE]">
-      <h2 id="register-modal-title" class="font-display text-lg font-bold text-[#4A4438]">🌷 花屋を登録する</h2>
-      <button onclick="closeRegisterModal()" class="p-2 -m-2 rounded-full text-[#A79C86] hover:text-[#5C5546] hover:bg-[#EDE7D6]">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+<div id="register-overlay" class="hidden modal-overlay" onclick="closeRegisterModalOnOverlay(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+    <div class="modal-header">
+      <h2 id="register-modal-title" class="font-display modal-title">🌷 花屋を登録する</h2>
+      <button onclick="closeRegisterModal()" class="modal-close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
 
-    <form id="register-form" class="px-6 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
+    <form id="register-form" class="modal-form">
 
       <!-- 必須項目 -->
       <div>
-        <label class="flex items-center gap-1.5 text-xs font-bold text-[#5C5546] mb-1.5">
+        <label for="input-name" class="form-label form-label-row">
           店舗名
-          <span class="text-[9px] bg-[#C89B7B] text-white px-1.5 py-0.5 rounded-full font-bold">必須</span>
+          <span class="required-badge">必須</span>
         </label>
-        <input type="text" id="input-name" placeholder="例）HANANONA" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        <input type="text" id="input-name" placeholder="例）HANANONA" class="form-input">
       </div>
 
       <div>
-        <label class="flex items-center gap-1.5 text-xs font-bold text-[#5C5546] mb-1.5">
+        <label for="input-area" class="form-label form-label-row">
           エリア・住所
-          <span class="text-[9px] bg-[#C89B7B] text-white px-1.5 py-0.5 rounded-full font-bold">必須</span>
+          <span class="required-badge">必須</span>
         </label>
-        <input type="text" id="input-area" placeholder="例）自由が丘、渋谷区笹塚" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        <input type="text" id="input-area" placeholder="例）自由が丘、渋谷区笹塚" class="form-input">
       </div>
 
       <!-- 任意項目 -->
       <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">店舗写真<span class="text-[#A79C86] font-normal">（任意）</span></label>
-        <input type="file" id="input-shop-photo" accept="image/*" class="hidden">
-        <div id="shop-photo-dropzone" class="h-32 border-2 border-dashed border-[#DCD3BE] rounded-lg flex flex-col items-center justify-center text-[#B8AE95] bg-white cursor-pointer overflow-hidden"></div>
+        <label for="input-shop-photo" class="form-label">店舗写真<span class="optional-text">（任意）</span></label>
+        <input type="file" id="input-shop-photo" accept="image/*" class="sr-only">
+        <label for="input-shop-photo" id="shop-photo-dropzone" class="photo-dropzone"></label>
       </div>
 
       <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">おすすめタグ<span class="text-[#A79C86] font-normal">（任意）</span></label>
-        <div id="tag-suggestions" class="flex flex-wrap gap-1.5 mb-2">
-          <button type="button" class="tag-option text-xs px-2.5 py-1 rounded-full border" data-tag="#ドライフラワー">#ドライフラワー</button>
-          <button type="button" class="tag-option text-xs px-2.5 py-1 rounded-full border" data-tag="#ギフト向け">#ギフト向け</button>
-          <button type="button" class="tag-option text-xs px-2.5 py-1 rounded-full border" data-tag="#普段使い">#普段使い</button>
-          <button type="button" class="tag-option text-xs px-2.5 py-1 rounded-full border" data-tag="#カフェ併設">#カフェ併設</button>
+        <p class="form-label">営業時間<span class="optional-text">（任意）</span></p>
+        <div class="hours-row">
+          <label for="input-hours-start" class="sr-only">開店時刻</label>
+          <select id="input-hours-start" class="form-input">
+            <option value="">開店</option>
+          </select>
+          <span class="hours-separator">〜</span>
+          <label for="input-hours-end" class="sr-only">閉店時刻</label>
+          <select id="input-hours-end" class="form-input">
+            <option value="">閉店</option>
+          </select>
         </div>
-        <input type="text" id="input-new-tag" placeholder="新しいタグを追加（例：#隠れ家風）Enterで追加" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        <label for="input-hours-manual" class="sr-only">営業時間を直接入力</label>
+        <input type="text" id="input-hours-manual" placeholder="直接入力する" class="form-input">
       </div>
 
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">営業時間<span class="text-[#A79C86] font-normal">（任意）</span></label>
-          <input type="text" id="input-hours" placeholder="例）営業時間：10:00〜19:00" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
-        </div>
-        <div>
-          <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">定休日<span class="text-[#A79C86] font-normal">（任意）</span></label>
-          <input type="text" id="input-closed-day" placeholder="例）定休日：水曜日" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+      <div>
+        <p class="form-label">定休日<span class="optional-text">（任意・複数選択可）</span></p>
+        <div id="closed-day-options" class="closed-day-options">
+          <button type="button" class="tag-option" data-day="月">月</button>
+          <button type="button" class="tag-option" data-day="火">火</button>
+          <button type="button" class="tag-option" data-day="水">水</button>
+          <button type="button" class="tag-option" data-day="木">木</button>
+          <button type="button" class="tag-option" data-day="金">金</button>
+          <button type="button" class="tag-option" data-day="土">土</button>
+          <button type="button" class="tag-option" data-day="日">日</button>
+          <button type="button" class="tag-option" data-day="祝">祝</button>
         </div>
       </div>
 
       <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">花の種類・ラッピング写真<span class="text-[#A79C86] font-normal">（任意）</span></label>
-        <input type="file" id="input-flower-photo" accept="image/*" class="hidden">
-        <div id="flower-photo-grid" class="grid grid-cols-3 gap-1.5">
-          <div class="mini-thumb photo-dropzone border-2 border-dashed border-[#DCD3BE] rounded-lg flex items-center justify-center text-[#C4BAA4] bg-white cursor-pointer overflow-hidden" data-index="0"></div>
-          <div class="mini-thumb photo-dropzone border-2 border-dashed border-[#DCD3BE] rounded-lg flex items-center justify-center text-[#C4BAA4] bg-white cursor-pointer overflow-hidden" data-index="1"></div>
-          <div class="mini-thumb photo-dropzone border-2 border-dashed border-[#DCD3BE] rounded-lg flex items-center justify-center text-[#C4BAA4] bg-white cursor-pointer overflow-hidden" data-index="2"></div>
+        <p class="form-label">店舗詳細<span class="optional-text">（任意・行く前の下調べ用）</span></p>
+
+        <div class="rating-row">
+          <span class="rating-row-label">花の種類</span>
+          <label class="rating-choice">
+            <input type="radio" name="rating-flower" value="many" class="rating-input sr-only">
+            <span class="tag-option">多い</span>
+          </label>
+          <label class="rating-choice">
+            <input type="radio" name="rating-flower" value="few" class="rating-input sr-only">
+            <span class="tag-option">少ない</span>
+          </label>
+        </div>
+
+        <div class="rating-row">
+          <span class="rating-row-label">スタッフの良さ</span>
+          <label class="rating-choice">
+            <input type="radio" name="rating-staff" value="good" class="rating-input sr-only">
+            <span class="tag-option">良い</span>
+          </label>
+          <label class="rating-choice">
+            <input type="radio" name="rating-staff" value="average" class="rating-input sr-only">
+            <span class="tag-option">普通</span>
+          </label>
+          <label class="rating-choice">
+            <input type="radio" name="rating-staff" value="bad" class="rating-input sr-only">
+            <span class="tag-option">悪い</span>
+          </label>
+        </div>
+
+        <div class="rating-row">
+          <span class="rating-row-label">値段</span>
+          <label class="rating-choice">
+            <input type="radio" name="rating-price" value="high" class="rating-input sr-only">
+            <span class="tag-option">高め</span>
+          </label>
+          <label class="rating-choice">
+            <input type="radio" name="rating-price" value="low" class="rating-input sr-only">
+            <span class="tag-option">安め</span>
+          </label>
         </div>
       </div>
 
       <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">Instagramリンク<span class="text-[#A79C86] font-normal">（任意）</span></label>
-        <input type="url" id="input-instagram" placeholder="https://instagram.com/..." class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E]">
+        <p class="form-label">おすすめタグ<span class="optional-text">（任意）</span></p>
+        <div id="tag-suggestions" class="tag-suggestions">
+          <button type="button" class="tag-option" data-tag="#ドライフラワー">#ドライフラワー</button>
+          <button type="button" class="tag-option" data-tag="#ギフト向け">#ギフト向け</button>
+          <button type="button" class="tag-option" data-tag="#普段使い">#普段使い</button>
+          <button type="button" class="tag-option" data-tag="#カフェ併設">#カフェ併設</button>
+        </div>
+        <label for="input-new-tag" class="sr-only">新しいタグを追加</label>
+        <input type="text" id="input-new-tag" placeholder="新しいタグを追加（例：#隠れ家風）Enterで追加" class="form-input">
       </div>
 
       <div>
-        <label class="text-xs font-bold text-[#5C5546] mb-1.5 block">コメント・メモ<span class="text-[#A79C86] font-normal">（任意・行きたい理由など）</span></label>
-        <textarea rows="3" id="input-comment" placeholder="例）友達がドライフラワーが可愛いと言っていた" class="w-full text-sm bg-white border border-[#DCD3BE] rounded-lg px-3 py-2.5 placeholder-[#C4BAA4] focus:outline-none focus:ring-2 focus:ring-[#8FA37E] resize-none"></textarea>
+        <p class="form-label">花の種類・ラッピング写真<span class="optional-text">（任意）</span></p>
+        <div id="flower-photo-grid" class="photo-grid-3">
+          <input type="file" id="input-flower-photo-0" accept="image/*" class="sr-only">
+          <label for="input-flower-photo-0" class="mini-thumb photo-dropzone" data-index="0"></label>
+          <input type="file" id="input-flower-photo-1" accept="image/*" class="sr-only">
+          <label for="input-flower-photo-1" class="mini-thumb photo-dropzone" data-index="1"></label>
+          <input type="file" id="input-flower-photo-2" accept="image/*" class="sr-only">
+          <label for="input-flower-photo-2" class="mini-thumb photo-dropzone" data-index="2"></label>
+        </div>
+      </div>
+
+      <div>
+        <label for="input-instagram" class="form-label">Instagramリンク<span class="optional-text">（任意）</span></label>
+        <input type="url" id="input-instagram" placeholder="https://instagram.com/..." class="form-input">
+      </div>
+
+      <div>
+        <p class="form-label">評価<span class="optional-text">（任意・行った後の感想）</span></p>
+        <div class="star-rating" role="radiogroup" aria-label="5段階評価">
+          <input type="radio" id="star-5" name="rating-stars" value="5" class="star-input sr-only">
+          <label for="star-5" class="star-icon" aria-label="5">★</label>
+          <input type="radio" id="star-4" name="rating-stars" value="4" class="star-input sr-only">
+          <label for="star-4" class="star-icon" aria-label="4">★</label>
+          <input type="radio" id="star-3" name="rating-stars" value="3" class="star-input sr-only">
+          <label for="star-3" class="star-icon" aria-label="3">★</label>
+          <input type="radio" id="star-2" name="rating-stars" value="2" class="star-input sr-only">
+          <label for="star-2" class="star-icon" aria-label="2">★</label>
+          <input type="radio" id="star-1" name="rating-stars" value="1" class="star-input sr-only">
+          <label for="star-1" class="star-icon" aria-label="1">★</label>
+        </div>
+      </div>
+
+      <div>
+        <label for="input-comment" class="form-label">コメント・メモ<span class="optional-text">（任意・行きたい理由など）</span></label>
+        <textarea rows="3" id="input-comment" placeholder="例）友達がドライフラワーが可愛いと言っていた" class="form-input form-input-resize-none"></textarea>
       </div>
 
     </form>
 
-    <div class="px-6 py-5 border-t border-[#E7E0CE]">
-      <p id="register-error" class="hidden text-xs text-red-500 mb-3">店舗名とエリアは必須項目です。</p>
-      <div class="flex gap-2">
-        <button onclick="closeRegisterModal()" class="flex-1 text-sm font-bold text-[#6E7F5C] bg-[#EDF0E5] border border-[#D3DCC4] py-2.5 rounded-lg">キャンセル</button>
-        <button id="register-submit-btn" onclick="saveShop()" class="flex-1 text-sm font-bold text-white bg-gradient-to-r from-[#C89B7B] to-[#D4AC8B] py-2.5 rounded-lg">🌱 登録する</button>
+    <div class="modal-footer">
+      <p id="register-error" class="hidden error-text">店舗名とエリアは必須項目です。</p>
+      <div class="modal-footer-buttons">
+        <button onclick="closeRegisterModal()" class="modal-btn modal-btn-cancel">キャンセル</button>
+        <button id="register-submit-btn" onclick="saveShop()" class="modal-btn modal-btn-submit">🌱 登録する</button>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="border-t border-[#DCD3BE] py-8 px-6 text-center">
-  <p class="text-xs text-[#A79C86] leading-relaxed max-w-lg mx-auto mb-2">掲載している店舗情報は、運営者が個人的に収集・記録したものであり、各店舗の許可を得て掲載しているものではありません。本サイトは個人利用を目的としており、商用利用や情報の転載はご遠慮ください。</p>
-  <p class="header-font text-[11px] text-[#C4BAA4]">© 2026 おはなやさんりすと</p>
+<footer class="page-footer">
+  <p class="page-footer-notice">掲載している店舗情報は、運営者が個人的に収集・記録したものであり、各店舗の許可を得て掲載しているものではありません。本サイトは個人利用を目的としており、商用利用や情報の転載はご遠慮ください。</p>
+  <p class="header-font page-footer-copyright">© 2026 おはなやさんりすと</p>
 </footer>
 
 <script src="script.js"></script>
